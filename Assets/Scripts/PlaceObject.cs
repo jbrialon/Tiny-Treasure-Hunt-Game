@@ -14,6 +14,10 @@ public class PlaceObject : MonoBehaviour
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
     public float maxRotationAngle = 120f; // Maximum rotation angle in degrees
 
+    // Define the range of scales you want to apply to the instantiated object
+    // public float minScale = 70.0f;
+    // public float maxScale = 100.0f;
+
 
     private void Awake() {
         aRRaycastManager = GetComponent<ARRaycastManager>();
@@ -44,7 +48,7 @@ public class PlaceObject : MonoBehaviour
                 
                 // Generate a random number between 0 (inclusive) and 2 (exclusive)
                 int randomPrefabIndex = Random.Range(0, 2);
-                
+
                 // Decide which prefab to instantiate based on the random number
                 GameObject prefabToInstantiate = randomPrefabIndex == 0 ? prefab1 : prefab2;
 
@@ -53,6 +57,9 @@ public class PlaceObject : MonoBehaviour
 
                 // Instantiate the chosen prefab at the given position with the random rotation
                 GameObject obj = Instantiate(original: prefabToInstantiate, position: pose.position, rotation: pose.rotation * randomRotation);
+
+                // Apply the random scale to the instantiated object
+                // obj.transform.localScale = new Vector3(randomScale, randomScale, randomScale);
 
                 // if (aRPlaneManager.GetPlane(trackableId: hit.trackableId).alignment == PlaneAlignment.HorizontalUp) {
                 //     Vector3 position = obj.transform.position;
