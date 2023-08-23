@@ -18,7 +18,6 @@ public class PlaceObject : MonoBehaviour
     // public float minScale = 70.0f;
     // public float maxScale = 100.0f;
 
-
     private void Awake() {
         aRRaycastManager = GetComponent<ARRaycastManager>();
         aRPlaneManager = GetComponent<ARPlaneManager>();
