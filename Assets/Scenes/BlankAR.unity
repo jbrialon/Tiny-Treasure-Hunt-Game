@@ -676,7 +676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnSound: {fileID: 8300000, guid: a9aabc0c1586e4f2781e95f081de729b, type: 3}
   CrossHair: {fileID: 0}
-  CarPrefab: {fileID: 6378763645007927171, guid: e5b76e4e2953b40899e6eb98c85b5f32,
+  CarPrefab: {fileID: 8081478454267109823, guid: 30f628ae826264e82b6b7c1c3c5d584a,
     type: 3}
 --- !u!82 &1641134108
 AudioSource:
