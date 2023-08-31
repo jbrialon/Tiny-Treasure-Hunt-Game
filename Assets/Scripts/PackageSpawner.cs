@@ -42,6 +42,18 @@ public class PackageSpawner : MonoBehaviour
         packageClone.transform.position = FindRandomLocation(plane);
 
         Package = packageClone.GetComponent<PackageBehaviour>();
+
+        Vector3 position = Package.gameObject.transform.position;
+        position.y = 0f;
+        Vector3 cameraPosition = Camera.main.transform.position;
+        cameraPosition.y = 0f;
+        Vector3 direction = cameraPosition - position;
+        Vector3 targetRotationEuler = Quaternion.LookRotation(forward: direction).eulerAngles;
+
+        Vector3 scaledEuler = Vector3.Scale(a: targetRotationEuler, b: Package.gameObject.transform.up.normalized ); // (0, 1, 0)
+
+        Quaternion targetRotation = Quaternion.Euler(euler: scaledEuler);
+        Package.gameObject.transform.rotation = Package.gameObject.transform.rotation * targetRotation;
     }
 
     private void Update()
