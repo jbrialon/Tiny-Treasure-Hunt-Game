@@ -43,6 +43,7 @@ public class PackageSpawner : MonoBehaviour
 
         Package = packageClone.GetComponent<PackageBehaviour>();
 
+        // Rotate the Package so it's always facing the camera
         Vector3 position = Package.gameObject.transform.position;
         position.y = 0f;
         Vector3 cameraPosition = Camera.main.transform.position;

@@ -22,12 +22,14 @@ public class CarBehaviour : MonoBehaviour
     private void Update()
     {
         var trackingPosition = CrossHair.transform.position;
-        if (Vector3.Distance(trackingPosition, transform.position) < 0.1)
+        if (Vector3.Distance(trackingPosition, transform.position) < 0.2)
         {
             return;
         }
 
         var lookRotation = Quaternion.LookRotation(trackingPosition - transform.position);
+        lookRotation.x = 0f;
+        lookRotation.z = 0f;
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
         transform.position = Vector3.MoveTowards(transform.position, trackingPosition, Speed * Time.deltaTime);
     }
