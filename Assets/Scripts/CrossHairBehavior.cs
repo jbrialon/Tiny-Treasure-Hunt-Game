@@ -26,6 +26,7 @@ public class CrossHairBehavior : MonoBehaviour
     private GameObject Car;
     private CarBehaviour CarBehaviour;
     private AudioSource audioSource;
+    private Timer timerComponent;
 
     private void Awake() {
         aRRaycastManager = GetComponent<ARRaycastManager>();
@@ -40,6 +41,7 @@ public class CrossHairBehavior : MonoBehaviour
         // get the CrossHair prefab
         CrossHair = transform.GetChild(0).gameObject;
         audioSource = GetComponent<AudioSource>();
+        timerComponent = FindObjectOfType<Timer>();
     }
 
     // Update is called once per frame
@@ -54,18 +56,18 @@ public class CrossHairBehavior : MonoBehaviour
         ARRaycastHit? hit = null;
         if (hits.Count > 0)
         {
-            // If you don't have a locked plane already...
+            // If we don't have a locked plane already
             var lockedPlane = DrivingSurfaceManager.LockedPlane;
             hit = null;
             
             if (lockedPlane == null)
             {
-                // ... use the first hit in `hits`.
+                // use the first hit in `hits`.
                 hit = hits[0];
             }
             else
             {   
-                // Otherwise use the locked plane, if it's there.
+                // Otherwise we use the locked plane, if it's there.
                 foreach (var h in hits)
                 {
                     if (h.trackableId == lockedPlane.trackableId)
@@ -99,6 +101,7 @@ public class CrossHairBehavior : MonoBehaviour
         CarBehaviour.CrossHair = CrossHair;
         Car.transform.position = CrossHair.transform.position;
 
+        timerComponent.StartTimer();
         if (!audioSource.isPlaying)
         {
             audioSource.PlayOneShot(spawnSound);
