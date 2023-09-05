@@ -6,24 +6,26 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
 
-    [SerializeField] float timer = 60f; // Start at 60 seconds
+    [SerializeField] public float timer = 60f; // Start at 60 seconds
     public bool isTimerRunning = false;
     private TMP_Text timerText;
+    private InstructionsMenu instructionsMenu;
+    private ScoreBoard scoreBoard;
 
+    private int playerScore = 0;
     void Start()
     {
+        instructionsMenu = FindObjectOfType<InstructionsMenu>();
+        scoreBoard = FindObjectOfType<ScoreBoard>();
         timerText = GetComponent<TMP_Text>();
-        timerText.text = "Timer";
-    }
-
-    public float TimerValue
-    {
-        get { return timer; }
+        timerText.gameObject.SetActive(false);
+        timerText.text = timer.ToString();
     }
 
     // Start the timer
     public void StartTimer()
-    {
+    {   
+        timerText.gameObject.SetActive(true);
         if (!isTimerRunning)
         {
             StartCoroutine(UpdateTimer());
@@ -56,11 +58,12 @@ public class Timer : MonoBehaviour
         if (timerText != null)
         {
             int roundedTimer = Mathf.RoundToInt(timer);
-            timerText.text = roundedTimer.ToString();
+            timerText.text = $"{roundedTimer.ToString()}s";
         }
     }
 
     private void StopFunction() {
-        timerText.text = "Finish!";
+        playerScore = scoreBoard.score;
+        instructionsMenu.showScore(playerScore);
     }
 }

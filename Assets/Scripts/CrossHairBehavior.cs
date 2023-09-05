@@ -27,7 +27,8 @@ public class CrossHairBehavior : MonoBehaviour
     private CarBehaviour CarBehaviour;
     private AudioSource audioSource;
     private Timer timerComponent;
-
+    private InstructionsMenu instructionsMenu;
+    
     private void Awake() {
         aRRaycastManager = GetComponent<ARRaycastManager>();
         aRPlaneManager = GetComponent<ARPlaneManager>();
@@ -42,6 +43,7 @@ public class CrossHairBehavior : MonoBehaviour
         CrossHair = transform.GetChild(0).gameObject;
         audioSource = GetComponent<AudioSource>();
         timerComponent = FindObjectOfType<Timer>();
+        instructionsMenu = FindObjectOfType<InstructionsMenu>();
     }
 
     // Update is called once per frame
@@ -85,6 +87,10 @@ public class CrossHairBehavior : MonoBehaviour
             DrivingSurfaceManager.LockPlane(CurrentPlane);
             // Move this reticle to the location of the hit.
             CrossHair.transform.position = hit.Value.pose.position;
+
+            // Hide instructions for Step One and Show Instructions for Step 2
+            instructionsMenu.updateTextToStepTwo();
+            
         }
 
         CrossHair.SetActive(CurrentPlane != null);
@@ -101,7 +107,10 @@ public class CrossHairBehavior : MonoBehaviour
         CarBehaviour.CrossHair = CrossHair;
         Car.transform.position = CrossHair.transform.position;
 
+        // UI Managements
+        instructionsMenu.hideInstructions();
         timerComponent.StartTimer();
+
         if (!audioSource.isPlaying)
         {
             audioSource.PlayOneShot(spawnSound);

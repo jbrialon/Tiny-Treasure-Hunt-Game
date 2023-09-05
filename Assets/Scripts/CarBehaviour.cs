@@ -10,9 +10,9 @@ public class CarBehaviour : MonoBehaviour
 
     public GameObject CrossHair;
     public float Speed = 1.2f;
+    private int scorePerHit = 1;
     private AudioSource audioSource;
     private ScoreBoard scoreBoard;
-    private int scorePerHit = 1;
     private Timer timerComponent;
 
     // Start is called before the first frame update

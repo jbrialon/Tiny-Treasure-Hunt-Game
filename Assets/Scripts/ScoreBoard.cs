@@ -4,13 +4,13 @@ using UnityEngine;
 using TMPro;
 public class ScoreBoard : MonoBehaviour
 {
-    int score;
+    public int score;
     TMP_Text scoreText;
 
     void Start()
     {
         scoreText = GetComponent<TMP_Text>();
-        scoreText.text = "Start";
+        scoreText.text = "0";
     }
 
     public void IncreaseScore(int amountToIncrease) {
