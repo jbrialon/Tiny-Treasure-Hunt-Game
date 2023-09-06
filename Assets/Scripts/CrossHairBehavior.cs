@@ -27,7 +27,7 @@ public class CrossHairBehavior : MonoBehaviour
     private CarBehaviour CarBehaviour;
     private AudioSource audioSource;
     private Timer timerComponent;
-    private InstructionsMenu instructionsMenu;
+    private UIInteractionScript ui;
     
     private void Awake() {
         aRRaycastManager = GetComponent<ARRaycastManager>();
@@ -43,7 +43,7 @@ public class CrossHairBehavior : MonoBehaviour
         CrossHair = transform.GetChild(0).gameObject;
         audioSource = GetComponent<AudioSource>();
         timerComponent = FindObjectOfType<Timer>();
-        instructionsMenu = FindObjectOfType<InstructionsMenu>();
+        ui = FindObjectOfType<UIInteractionScript>();
     }
 
     // Update is called once per frame
@@ -89,7 +89,7 @@ public class CrossHairBehavior : MonoBehaviour
             CrossHair.transform.position = hit.Value.pose.position;
 
             // Hide instructions for Step One and Show Instructions for Step 2
-            instructionsMenu.updateTextToStepTwo();
+            ui.updateTextToStepTwo();
             
         }
 
@@ -108,7 +108,7 @@ public class CrossHairBehavior : MonoBehaviour
         Car.transform.position = CrossHair.transform.position;
 
         // UI Managements
-        instructionsMenu.hideInstructions();
+        ui.HideTextAnimation();
         timerComponent.StartTimer();
 
         if (!audioSource.isPlaying)
