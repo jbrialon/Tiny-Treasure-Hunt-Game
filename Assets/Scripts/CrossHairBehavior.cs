@@ -27,7 +27,7 @@ public class CrossHairBehavior : MonoBehaviour
     private CarBehaviour CarBehaviour;
     private AudioSource audioSource;
     private Timer timerComponent;
-    private UIInteractionScript ui;
+    private UIInstructionMenu ui;
     
     private void Awake() {
         aRRaycastManager = GetComponent<ARRaycastManager>();
@@ -43,7 +43,7 @@ public class CrossHairBehavior : MonoBehaviour
         CrossHair = transform.GetChild(0).gameObject;
         audioSource = GetComponent<AudioSource>();
         timerComponent = FindObjectOfType<Timer>();
-        ui = FindObjectOfType<UIInteractionScript>();
+        ui = FindObjectOfType<UIInstructionMenu>();
     }
 
     // Update is called once per frame
@@ -108,7 +108,7 @@ public class CrossHairBehavior : MonoBehaviour
         Car.transform.position = CrossHair.transform.position;
 
         // UI Managements
-        ui.HideTextAnimation();
+        // ui.HideTextAnimation();
         timerComponent.StartTimer();
 
         if (!audioSource.isPlaying)
