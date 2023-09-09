@@ -9,14 +9,14 @@ public class Timer : MonoBehaviour
     [SerializeField] public float timer = 60f; // Start at 60 seconds
     public bool isTimerRunning = false;
     private TMP_Text timerText;
-    private InstructionsMenu instructionsMenu;
-    private ScoreBoard scoreBoard;
+    // private InstructionsMenu instructionsMenu;
+    // private ScoreBoard scoreBoard;
 
     private int playerScore = 0;
     void Start()
     {
-        instructionsMenu = FindObjectOfType<InstructionsMenu>();
-        scoreBoard = FindObjectOfType<ScoreBoard>();
+        // instructionsMenu = FindObjectOfType<InstructionsMenu>();
+        // scoreBoard = FindObjectOfType<ScoreBoard>();
         timerText = GetComponent<TMP_Text>();
         timerText.gameObject.SetActive(false);
         timerText.text = timer.ToString();
@@ -63,7 +63,7 @@ public class Timer : MonoBehaviour
     }
 
     private void StopFunction() {
-        playerScore = scoreBoard.score;
-        instructionsMenu.showScore(playerScore);
+        // playerScore = scoreBoard.score;
+        // instructionsMenu.showScore(playerScore);
     }
 }

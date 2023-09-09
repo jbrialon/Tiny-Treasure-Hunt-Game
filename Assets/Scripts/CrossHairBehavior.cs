@@ -26,7 +26,7 @@ public class CrossHairBehavior : MonoBehaviour
     private GameObject Car;
     private CarBehaviour CarBehaviour;
     private AudioSource audioSource;
-    private Timer timerComponent;
+    // private Timer timerComponent;
     private UIInstructionMenu ui;
     
     private void Awake() {
@@ -42,7 +42,7 @@ public class CrossHairBehavior : MonoBehaviour
         // get the CrossHair prefab
         CrossHair = transform.GetChild(0).gameObject;
         audioSource = GetComponent<AudioSource>();
-        timerComponent = FindObjectOfType<Timer>();
+        // timerComponent = FindObjectOfType<Timer>();
         ui = FindObjectOfType<UIInstructionMenu>();
     }
 
@@ -109,7 +109,7 @@ public class CrossHairBehavior : MonoBehaviour
 
         // UI Managements
         // ui.HideTextAnimation();
-        timerComponent.StartTimer();
+        // timerComponent.StartTimer();
 
         if (!audioSource.isPlaying)
         {

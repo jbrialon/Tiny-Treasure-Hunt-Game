@@ -26,7 +26,7 @@ public class UISplashScreen : MonoBehaviour
     // To reveal the element after a delay
     IEnumerator DelayedReveal()
     {
-        yield return new WaitForSeconds(0.2f); // Delay for 1 second
+        yield return new WaitForSeconds(0.2f); // Delay for 0.2 second
         
         uiLogo.AddToClassList("fade-in-animation");
         uiLogoMerkle.AddToClassList("fade-in-animation");

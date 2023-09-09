@@ -12,15 +12,15 @@ public class CarBehaviour : MonoBehaviour
     public float Speed = 1.2f;
     private int scorePerHit = 1;
     private AudioSource audioSource;
-    private ScoreBoard scoreBoard;
-    private Timer timerComponent;
+    // private ScoreBoard scoreBoard;
+    // private Timer timerComponent;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        scoreBoard = FindObjectOfType<ScoreBoard>();
-        timerComponent = FindObjectOfType<Timer>();
+        // scoreBoard = FindObjectOfType<ScoreBoard>();
+        // timerComponent = FindObjectOfType<Timer>();
     }
 
     private void Update()
@@ -48,10 +48,11 @@ public class CarBehaviour : MonoBehaviour
                 audioSource.PlayOneShot(successSound);
             }
             
-            if (timerComponent.isTimerRunning) {
-                Destroy(other.gameObject);
-                scoreBoard.IncreaseScore(scorePerHit);
-            }
+            Destroy(other.gameObject);
+            // if (timerComponent.isTimerRunning) {
+            //     Destroy(other.gameObject);
+            //     scoreBoard.IncreaseScore(scorePerHit);
+            // }
         }
     }
 }

@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597d485b5599b4826998ff05412d142a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeOutTime: 5
+  FadeOutTime: 3
   uiDoc: {fileID: 13504999}
 --- !u!1001 &272184516
 PrefabInstance:
@@ -608,6 +608,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1152214779}
   - component: {fileID: 1152214780}
+  - component: {fileID: 1152214781}
   m_Layer: 0
   m_Name: InstructionMenu
   m_TagString: Untagged
@@ -647,6 +648,22 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: 366403c85f926406996e098159ffb917,
     type: 3}
   m_SortingOrder: 0
+--- !u!114 &1152214781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152214778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee1d2186877874ba7904fd8d2884a34c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instructionStepOne: Move around with your phone to detect the ground
+  instructionStepTwo: Touch the Screen to Spawn your Ship, you have 30s to find as
+    many Treasures Chests as you can!
+  uiDoc: {fileID: 1152214780}
 --- !u!1 &1354141925
 GameObject:
   m_ObjectHideFlags: 0
