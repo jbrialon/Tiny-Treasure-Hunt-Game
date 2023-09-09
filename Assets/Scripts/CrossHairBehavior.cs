@@ -108,7 +108,8 @@ public class CrossHairBehavior : MonoBehaviour
         Car.transform.position = CrossHair.transform.position;
 
         // UI Managements
-        // ui.HideTextAnimation();
+        ui.hideInstructions();
+        // maybe this should be inside the UI
         // timerComponent.StartTimer();
 
         if (!audioSource.isPlaying)

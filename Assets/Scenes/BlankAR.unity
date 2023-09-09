@@ -660,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee1d2186877874ba7904fd8d2884a34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionStepOne: Move around with your phone to detect the ground
+  instructionStepOne: Move around with your phone to detect the sea
   instructionStepTwo: Touch the Screen to Spawn your Ship, you have 30s to find as
     many Treasures Chests as you can!
   uiDoc: {fileID: 1152214780}

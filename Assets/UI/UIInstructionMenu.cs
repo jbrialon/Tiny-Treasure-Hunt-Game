@@ -28,7 +28,15 @@ public class UIInstructionMenu : MonoBehaviour
         if (internalStep == 1) {
             internalStep = 2;
             uiLabel.text = instructionStepTwo;
+
+            // hide arrows and HandPhone
+            uiArrows.AddToClassList("hide-animation");
+            uiHandphone.AddToClassList("hide-animation");
         }
+    }
+
+    public void hideInstructions () {
+        uiContainer.RemoveFromClassList("reveal-animation");
     }
 
     // To reveal the element after a delay

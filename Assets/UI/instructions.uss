@@ -79,6 +79,5 @@
 }
 
 .hide-animation {
-    translate: 0 -10px;
     opacity: 0;
 }
