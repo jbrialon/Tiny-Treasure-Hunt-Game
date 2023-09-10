@@ -72,10 +72,10 @@
 
 .chest {
     position: absolute;
-    bottom: -30px;
+    bottom: -50px;
     width: 87px;
-    height: 55px;
-    background-image: url('project://database/Assets/UI/ressources/treasure.png?fileID=2800000&guid=3c73be8586d49484295c817d3f6d0a1b&type=3#treasure');
+    height: 87px;
+    background-image: url('project://database/Assets/UI/ressources/chest.png?fileID=2800000&guid=c44c3b1c58e7d4b7f9e61b6274f7cb1c&type=3#chest');
     transition: all 300ms ease-in-out 300ms;
     transform-origin: center center;
     translate: 0 0;

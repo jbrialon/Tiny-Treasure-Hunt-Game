@@ -28,6 +28,7 @@ public class CrossHairBehavior : MonoBehaviour
     private AudioSource audioSource;
     // private Timer timerComponent;
     private UIInstructionMenu ui;
+    private UIHud HUD;
     
     private void Awake() {
         aRRaycastManager = GetComponent<ARRaycastManager>();
@@ -44,6 +45,7 @@ public class CrossHairBehavior : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         // timerComponent = FindObjectOfType<Timer>();
         ui = FindObjectOfType<UIInstructionMenu>();
+        HUD = FindObjectOfType<UIHud>();
     }
 
     // Update is called once per frame
@@ -88,8 +90,9 @@ public class CrossHairBehavior : MonoBehaviour
             // Move this reticle to the location of the hit.
             CrossHair.transform.position = hit.Value.pose.position;
 
-            // Hide instructions for Step One and Show Instructions for Step 2
+            // Hide instructions for Step One and Show Instructions for Step 2 + show HUD
             ui.updateTextToStepTwo();
+            HUD.showHUD();
             
         }
 
@@ -111,6 +114,7 @@ public class CrossHairBehavior : MonoBehaviour
         ui.hideInstructions();
         // maybe this should be inside the UI
         // timerComponent.StartTimer();
+        HUD.startTimer();
 
         if (!audioSource.isPlaying)
         {

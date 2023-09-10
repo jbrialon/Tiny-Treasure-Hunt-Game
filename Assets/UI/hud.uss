@@ -1,0 +1,58 @@
+* {
+    -unity-font-definition: initial;
+    color: rgb(255, 255, 255);
+    -unity-font: url('project://database/Assets/Fonts/PirataOne-Regular.ttf?fileID=12800000&guid=7b33cad49d21a441dbc25eb2b02f472d&type=3#PirataOne-Regular');
+}
+
+.container {
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding: 0px 0px 15px 0px;
+    opacity: 1;
+    translate: 0 0;
+    transition: all 900ms ease;
+}
+
+.container-hud {
+    position: relative;
+    padding-top: 23%;
+    width: 100%;
+    background-image: url('project://database/Assets/UI/ressources/plank.png?fileID=2800000&guid=d1903a22af583483889965bf7f354c35&type=3#plank');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.container-hud-inner {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    top: 0px;
+    left: 30px;
+    right: 30px;
+    bottom: 5px;
+}
+
+.generic-text {
+    -unity-text-align: upper-center;
+    font-size: 24px;
+    white-space: normal;
+    letter-spacing: 2px;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(85, 59, 44);
+}
+
+.timer-text {
+
+}
+
+.score-text {
+    margin-left: 15px;
+}
+
+.show-transition {
+    opacity: 1;
+    translate: 0 0;
+}
