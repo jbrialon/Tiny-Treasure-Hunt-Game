@@ -6,18 +6,20 @@ using UnityEngine.UIElements;
 public class UIInstructionMenu : MonoBehaviour
 {
     [SerializeField] string instructionStepOne = "Move around with your phone to detect the sea.";
-    [SerializeField] string instructionStepTwo = "Touch the Screen to Spawn your Ship, you have 30s to find as many Treasures Chests as you can!";
+    [SerializeField] string instructionStepTwo = "Touch the screen to spawn your ship. \n\nYou have 30s to find as many Treasures Chests as you can!";
     private int internalStep = 1;
     public UIDocument uiDoc;
     private VisualElement uiContainer;
     private VisualElement uiArrows;
     private VisualElement uiHandphone;
+    private VisualElement uiChest;
     private Label uiLabel;
     void Start()
     {
         uiContainer = uiDoc.rootVisualElement.Q<VisualElement>("instructions");
         uiArrows = uiDoc.rootVisualElement.Q<VisualElement>("arrows");
         uiHandphone = uiDoc.rootVisualElement.Q<VisualElement>("handphone");
+        uiChest = uiDoc.rootVisualElement.Q<VisualElement>("chest");
         uiLabel = uiDoc.rootVisualElement.Q<Label>("textLabel");
 
         uiLabel.text = instructionStepOne;
@@ -30,13 +32,14 @@ public class UIInstructionMenu : MonoBehaviour
             uiLabel.text = instructionStepTwo;
 
             // hide arrows and HandPhone
-            uiArrows.AddToClassList("hide-animation");
-            uiHandphone.AddToClassList("hide-animation");
+            uiArrows.AddToClassList("hide-transition");
+            uiHandphone.AddToClassList("hide-transition");
+            uiChest.AddToClassList("show-transition");
         }
     }
 
     public void hideInstructions () {
-        uiContainer.RemoveFromClassList("reveal-animation");
+        uiContainer.RemoveFromClassList("show-transition");
     }
 
     // To reveal the element after a delay
@@ -44,7 +47,7 @@ public class UIInstructionMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(4.0f); // Delay for 1 second
         
-        uiContainer.AddToClassList("reveal-animation");
+        uiContainer.AddToClassList("show-transition");
         StartCoroutine(RotateVisual());
     }
 
@@ -52,7 +55,7 @@ public class UIInstructionMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(0.9f);
 
-        uiHandphone.AddToClassList("rotate-animation");
+        uiHandphone.AddToClassList("rotate-transition");
         StartCoroutine(RotateVisualBack());
     }
 
@@ -60,6 +63,6 @@ public class UIInstructionMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
 
-        uiHandphone.RemoveFromClassList("rotate-animation");
+        uiHandphone.RemoveFromClassList("rotate-transition");
     }
 }

@@ -6,6 +6,7 @@
                 <ui:Label tabindex="-1" text="Move around with your phone to detect the ground" display-tooltip-when-elided="true" name="textLabel" class="generic-text" />
                 <ui:VisualElement name="arrows" class="circle-arrows" />
                 <ui:VisualElement name="handphone" class="hand-phone" />
+                <ui:VisualElement name="chest" class="chest" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
