@@ -10,17 +10,14 @@ public class CarBehaviour : MonoBehaviour
 
     public GameObject CrossHair;
     public float Speed = 1.2f;
-    private int scorePerHit = 1;
     private AudioSource audioSource;
-    // private ScoreBoard scoreBoard;
-    // private Timer timerComponent;
+    private UIHud HUD;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        // scoreBoard = FindObjectOfType<ScoreBoard>();
-        // timerComponent = FindObjectOfType<Timer>();
+        HUD = FindObjectOfType<UIHud>();
     }
 
     private void Update()
@@ -43,16 +40,11 @@ public class CarBehaviour : MonoBehaviour
         var Package = other.GetComponent<PackageBehaviour>();
         if (Package != null)
         {
-            if (!audioSource.isPlaying)
-            {
+            if (HUD.isTimerRunning) {
+                Destroy(other.gameObject);
                 audioSource.PlayOneShot(successSound);
+                HUD.IncreaseScore();
             }
-            
-            Destroy(other.gameObject);
-            // if (timerComponent.isTimerRunning) {
-            //     Destroy(other.gameObject);
-            //     scoreBoard.IncreaseScore(scorePerHit);
-            // }
         }
     }
 }

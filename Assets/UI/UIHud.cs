@@ -7,6 +7,8 @@ public class UIHud : MonoBehaviour
 {
     [SerializeField] public float timer = 30f; // Start at 30 seconds
     public bool isTimerRunning = false;
+    public int score;
+    private int scorePerHit = 1;
     public UIDocument uiDoc;
     private VisualElement uiContainer;
     private Label uiTimerLabel;
@@ -20,6 +22,11 @@ public class UIHud : MonoBehaviour
     }
     public void showHUD () {
         uiContainer.AddToClassList("show-transition");
+    }
+    
+    public void IncreaseScore() {
+        score += scorePerHit;
+        uiScoreLabel.text = score.ToString();
     }
     public void startTimer () {
         Debug.Log("start timer");
@@ -65,7 +72,8 @@ public class UIHud : MonoBehaviour
     }
 
     private void StopFunction() {
-        // playerScore = scoreBoard.score;
-        // instructionsMenu.showScore(playerScore);
+        Debug.Log(score);
+        // TODO: a score menu
+        // scoreMenu.showScore(playerScore);
     }
 }

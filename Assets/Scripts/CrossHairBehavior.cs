@@ -112,8 +112,6 @@ public class CrossHairBehavior : MonoBehaviour
 
         // UI Managements
         ui.hideInstructions();
-        // maybe this should be inside the UI
-        // timerComponent.StartTimer();
         HUD.startTimer();
 
         if (!audioSource.isPlaying)

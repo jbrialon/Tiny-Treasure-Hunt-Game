@@ -10,8 +10,8 @@
     justify-content: flex-end;
     flex-direction: column;
     padding: 0px 0px 15px 0px;
-    opacity: 1;
-    translate: 0 0;
+    opacity: 0;
+    translate: 0 60px;
     transition: all 900ms ease;
 }
 

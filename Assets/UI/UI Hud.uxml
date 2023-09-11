@@ -4,7 +4,7 @@
         <ui:VisualElement name="VisualElement" class="container-hud">
             <ui:VisualElement name="VisualElement" class="container-hud-inner">
                 <ui:Label tabindex="-1" text="30:00s" display-tooltip-when-elided="true" name="timerLabel" class="generic-text timer-test" />
-                <ui:Label tabindex="-1" text="2" display-tooltip-when-elided="true" name="scoreLabel" class="generic-text score-text" />
+                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="scoreLabel" class="generic-text score-text" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
