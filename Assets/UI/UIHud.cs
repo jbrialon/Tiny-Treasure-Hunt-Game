@@ -41,12 +41,16 @@ public class UIHud : MonoBehaviour
     {
         if (uiTimerLabel != null)
         {
+            // Separate seconds and milliseconds without rounding
             int seconds = Mathf.FloorToInt(timer);
-            int milliseconds = Mathf.RoundToInt((timer - seconds) * 1000); // Round milliseconds to the nearest whole number
+            int milliseconds = Mathf.FloorToInt((timer - Mathf.Floor(timer)) * 1000);
 
-            milliseconds.ToString("00");
+            // Ensure seconds and milliseconds are not negative
+            seconds = Mathf.Max(0, seconds);
+            milliseconds = Mathf.Max(0, milliseconds);
 
-            string formattedTimer = string.Format("{0}:{1:D2}s", seconds, milliseconds);
+            // Format the timer as "seconds:milliseconds" with 2 digits for milliseconds
+            string formattedTimer = $"{seconds}:{milliseconds.ToString("D2")}s"; // Using string interpolation
             uiTimerLabel.text = formattedTimer;
         }
     }
@@ -73,6 +77,7 @@ public class UIHud : MonoBehaviour
 
     private void StopFunction() {
         Debug.Log(score);
+        uiTimerLabel.text = "0:00s";
         // TODO: a score menu
         // scoreMenu.showScore(playerScore);
     }
