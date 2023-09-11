@@ -1,0 +1,55 @@
+* {
+    -unity-font-definition: initial;
+    color: rgb(51, 36, 29);
+    -unity-font: url('project://database/Assets/Fonts/PirataOne-Regular.ttf?fileID=12800000&guid=7b33cad49d21a441dbc25eb2b02f472d&type=3#PirataOne-Regular');
+}
+
+.container {
+    align-items: center;
+    flex-grow: 1;
+    justify-content: center;
+    flex-direction: column;
+    padding: 25px 35px 15px 35px;
+    opacity: 0;
+    scale: 0.1 0.1;
+    transition: all 300ms ease-in-out-bounce;
+}
+
+.container-text {
+    position: relative;
+    padding-top: 120%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-image: url('project://database/Assets/UI/ressources/congratsBG.png?fileID=2800000&guid=730afcca389c14e4db59ccb438a4679d&type=3#congratsBG');
+}
+
+.container-text-inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 10px;
+}
+
+.generic-text {
+    -unity-text-align: upper-center;
+    font-size: 16px;
+    white-space: normal;
+    letter-spacing: 2px;
+    /*unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(155, 189, 217); */
+    opacity: 1;
+    transition: opacity 300ms ease 900ms;
+    padding: 0;
+    margin: 0 0 5px 0;
+}
+
+.show-transition {
+    scale: 1 1;
+    opacity: 1;
+}

@@ -11,8 +11,8 @@
     flex-direction: column;
     padding: 25px 25px 15px 25px;
     opacity: 0;
-    translate: 0 -60px;
-    transition: all 1200ms ease;
+    translate: 0 -50%;
+    transition: all 600ms ease-out;
 }
 
 .container-text {
@@ -41,6 +41,8 @@
     font-size: 16px;
     white-space: normal;
     letter-spacing: 2px;
+    opacity: 0;
+    transition: opacity 300ms ease 900ms;
 }
 
 .circle-arrows {
@@ -83,6 +85,10 @@
 }
 .show-transition {
     translate: 0 0;
+    opacity: 1;
+}
+
+.show-transition .generic-text {
     opacity: 1;
 }
 

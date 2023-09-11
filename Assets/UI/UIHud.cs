@@ -13,12 +13,15 @@ public class UIHud : MonoBehaviour
     private VisualElement uiContainer;
     private Label uiTimerLabel;
     private Label uiScoreLabel;
+
+    private UIScoreboard Scoreboard;
     // Start is called before the first frame update
     void Start()
     {
         uiContainer = uiDoc.rootVisualElement.Q<VisualElement>("hud");
         uiTimerLabel = uiDoc.rootVisualElement.Q<Label>("timerLabel");
         uiScoreLabel = uiDoc.rootVisualElement.Q<Label>("scoreLabel");
+        Scoreboard = FindObjectOfType<UIScoreboard>();
     }
     public void showHUD () {
         uiContainer.AddToClassList("show-transition");
@@ -78,7 +81,6 @@ public class UIHud : MonoBehaviour
     private void StopFunction() {
         Debug.Log(score);
         uiTimerLabel.text = "0:00s";
-        // TODO: a score menu
-        // scoreMenu.showScore(playerScore);
+        Scoreboard.showScoreboard(score);
     }
 }

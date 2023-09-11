@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/scoreboard.uss?fileID=7433441132597879392&amp;guid=b70d2f0cfd7ca4e10a10f81a66e03045&amp;type=3#scoreboard" />
+    <ui:VisualElement name="scoreboard" class="container">
+        <ui:VisualElement name="VisualElement" class="container-text">
+            <ui:VisualElement name="VisualElement" class="container-text-inner">
+                <ui:Label tabindex="-1" text="Congratulations !" display-tooltip-when-elided="true" name="titleLabel" class="generic-text" />
+                <ui:Label tabindex="-1" text="You found 5 Treasure chests!" display-tooltip-when-elided="true" name="paragraphLabel" class="generic-text" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

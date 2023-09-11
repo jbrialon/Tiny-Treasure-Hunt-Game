@@ -43,7 +43,6 @@ public class CrossHairBehavior : MonoBehaviour
         // get the CrossHair prefab
         CrossHair = transform.GetChild(0).gameObject;
         audioSource = GetComponent<AudioSource>();
-        // timerComponent = FindObjectOfType<Timer>();
         ui = FindObjectOfType<UIInstructionMenu>();
         HUD = FindObjectOfType<UIHud>();
     }
