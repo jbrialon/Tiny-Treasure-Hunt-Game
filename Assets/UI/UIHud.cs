@@ -13,9 +13,8 @@ public class UIHud : MonoBehaviour
     private VisualElement uiContainer;
     private Label uiTimerLabel;
     private Label uiScoreLabel;
-
     private UIScoreboard Scoreboard;
-    // Start is called before the first frame update
+
     void Start()
     {
         uiContainer = uiDoc.rootVisualElement.Q<VisualElement>("hud");
@@ -23,6 +22,7 @@ public class UIHud : MonoBehaviour
         uiScoreLabel = uiDoc.rootVisualElement.Q<Label>("scoreLabel");
         Scoreboard = FindObjectOfType<UIScoreboard>();
     }
+
     public void showHUD () {
         uiContainer.AddToClassList("show-transition");
     }
@@ -39,7 +39,7 @@ public class UIHud : MonoBehaviour
         }
     }
 
-    // Update the text field with the rounded timer value
+    // Update the text field with the formatted timer value
     private void updateText()
     {
         if (uiTimerLabel != null)
@@ -78,8 +78,8 @@ public class UIHud : MonoBehaviour
         StopFunction();
     }
 
+    // When the timer reach 0 we show the score
     private void StopFunction() {
-        Debug.Log(score);
         uiTimerLabel.text = "0:00s";
         Scoreboard.showScoreboard(score);
     }

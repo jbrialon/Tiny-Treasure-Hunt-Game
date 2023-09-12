@@ -8,7 +8,6 @@ public class UIScoreboard : MonoBehaviour
     public UIDocument uiDoc;
     private VisualElement uiContainer;
     private Label uiParagraphLabel;
-    // Start is called before the first frame update
     void Start()
     {
         uiContainer = uiDoc.rootVisualElement.Q<VisualElement>("scoreboard");

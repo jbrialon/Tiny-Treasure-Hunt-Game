@@ -5,8 +5,8 @@ using UnityEngine.UIElements;
 
 public class UIInstructionMenu : MonoBehaviour
 {
-    [SerializeField] string instructionStepOne = "Move around with your phone to detect the sea.";
-    [SerializeField] string instructionStepTwo = "Touch the screen to spawn your ship. \n\nYou have 30s to find as many Treasures Chests as you can!";
+    [SerializeField] private string instructionStepOne = "Move around with your phone to detect the sea.";
+    [SerializeField] private string instructionStepTwo = "Touch the screen to spawn your ship. \n\nYou have 30s to find as many Treasures Chests as you can!";
     private int internalStep = 1;
     public UIDocument uiDoc;
     private VisualElement uiContainer;
@@ -14,6 +14,8 @@ public class UIInstructionMenu : MonoBehaviour
     private VisualElement uiHandphone;
     private VisualElement uiChest;
     private Label uiLabel;
+    private UISplashScreen SplashScreen;
+
     void Start()
     {
         uiContainer = uiDoc.rootVisualElement.Q<VisualElement>("instructions");
@@ -22,10 +24,12 @@ public class UIInstructionMenu : MonoBehaviour
         uiChest = uiDoc.rootVisualElement.Q<VisualElement>("chest");
         uiLabel = uiDoc.rootVisualElement.Q<Label>("textLabel");
 
+        SplashScreen = FindObjectOfType<UISplashScreen>();
         uiLabel.text = instructionStepOne;
 
         StartCoroutine(DelayedReveal());
     }
+
     public void updateTextToStepTwo() {
         if (internalStep == 1) {
             internalStep = 2;
@@ -45,24 +49,32 @@ public class UIInstructionMenu : MonoBehaviour
     // To reveal the element after a delay
     IEnumerator DelayedReveal()
     {
-        yield return new WaitForSeconds(4.0f); // Delay for 1 second
+        float delay = SplashScreen ? SplashScreen.GetFadeOutTime() + 1f : 4.0f;
+        yield return new WaitForSeconds(delay);
         
         uiContainer.AddToClassList("show-transition");
-        StartCoroutine(RotateVisual());
+        StartCoroutine(RotateVisual(1.3f));
     }
 
-    IEnumerator RotateVisual()
+    // Rotate hand/hook animation
+    IEnumerator RotateVisual(float delay)
     {
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(delay);
 
         uiHandphone.AddToClassList("rotate-transition");
         StartCoroutine(RotateVisualBack());
     }
 
+    // Rotate hand/hook animation back
     IEnumerator RotateVisualBack()
     {
         yield return new WaitForSeconds(0.3f);
 
         uiHandphone.RemoveFromClassList("rotate-transition");
+
+        // we loop this animation every 3s if we are on the step 1
+        if (internalStep == 1) {
+            StartCoroutine(RotateVisual(3.0f));
+        }
     }
 }

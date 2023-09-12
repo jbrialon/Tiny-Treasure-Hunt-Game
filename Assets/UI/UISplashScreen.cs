@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class UISplashScreen : MonoBehaviour
 {
 
-    [SerializeField] float FadeOutTime = 5.0f;
+    [SerializeField] private float FadeOutTime = 5.0f;
     public UIDocument uiDoc;
     private VisualElement uiContainer;
     private VisualElement uiLogo;
@@ -20,9 +20,12 @@ public class UISplashScreen : MonoBehaviour
         // Call DelayedReveal to start the animation after a delay
         StartCoroutine(DelayedReveal());
     }
-    public void updateTextToStepTwo() {
-        Debug.Log("this should't be here");
+
+    public float GetFadeOutTime()
+    {
+        return FadeOutTime;
     }
+
     // To reveal the element after a delay
     IEnumerator DelayedReveal()
     {

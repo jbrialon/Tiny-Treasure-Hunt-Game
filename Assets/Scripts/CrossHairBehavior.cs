@@ -26,7 +26,6 @@ public class CrossHairBehavior : MonoBehaviour
     private GameObject Car;
     private CarBehaviour CarBehaviour;
     private AudioSource audioSource;
-    // private Timer timerComponent;
     private UIInstructionMenu ui;
     private UIHud HUD;
     
