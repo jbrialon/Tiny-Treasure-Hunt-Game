@@ -38,6 +38,9 @@ public class CarBehaviour : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var Package = other.GetComponent<PackageBehaviour>();
+        var Ennemy = other.GetComponent<EnnemyBehaviour>();
+
+        // we hit a Package
         if (Package != null)
         {
             if (HUD.isTimerRunning) {
@@ -46,5 +49,18 @@ public class CarBehaviour : MonoBehaviour
                 HUD.IncreaseScore();
             }
         }
+
+        // we hit an Ennemy
+        if (Ennemy != null)
+        {
+            Debug.Log("We hit and Ennemy!");
+            if (HUD.isTimerRunning) {
+                // Destroy(other.gameObject);
+                // audioSource.PlayOneShot(successSound);
+                // HUD.IncreaseScore();
+                Debug.Log("Play Game Over");
+            }
+        }
+
     }
 }

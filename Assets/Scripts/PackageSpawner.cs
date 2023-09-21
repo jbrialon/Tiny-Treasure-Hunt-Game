@@ -6,10 +6,15 @@ using UnityEngine.XR.ARFoundation;
 public class PackageSpawner : MonoBehaviour
 {
     public DrivingSurfaceManager DrivingSurfaceManager;
+    private UIHud HUD;
     public GameObject PackagePrefab;
+    public GameObject EnnemyPrefab;
 
     private PackageBehaviour Package;
-    
+    private EnnemyBehaviour Ennemy;
+
+    private bool isEnnemySpawned = false;
+    private float randomSpawnTime = 0;
     public static Vector3 RandomInTriangle(Vector3 v1, Vector3 v2)
     {
         float u = Random.Range(0.0f, 1.0f);
@@ -36,6 +41,10 @@ public class PackageSpawner : MonoBehaviour
         return randomPoint;
     }
 
+    private void Start () {
+        HUD = FindObjectOfType<UIHud>();
+        randomSpawnTime = Random.Range(5.0f, 20.0f);
+    }
     public void SpawnPackage(ARPlane plane)
     {
         var packageClone = GameObject.Instantiate(PackagePrefab);
@@ -56,6 +65,14 @@ public class PackageSpawner : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(euler: scaledEuler);
         Package.gameObject.transform.rotation = Package.gameObject.transform.rotation * targetRotation;
     }
+    private void SpawnEnemy(ARPlane plane)
+    {
+        isEnnemySpawned = true;
+        var enemyClone = GameObject.Instantiate(EnnemyPrefab);
+        enemyClone.transform.position = FindRandomLocation(plane);
+
+        Ennemy = enemyClone.GetComponent<EnnemyBehaviour>();
+    }
 
     private void Update()
     {
@@ -65,6 +82,14 @@ public class PackageSpawner : MonoBehaviour
             if (Package == null)
             {
                 SpawnPackage(lockedPlane);
+            }
+
+            if (isEnnemySpawned == false)
+            {
+                // if the timer is under the random Spawn Time we spawn the Ennemy 
+                if (randomSpawnTime > HUD.timer) {
+                    SpawnEnemy(lockedPlane);
+                }
             }
 
             var packagePosition = Package.gameObject.transform.position;
