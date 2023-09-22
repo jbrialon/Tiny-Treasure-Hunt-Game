@@ -7,17 +7,21 @@ using UnityEngine;
 public class CarBehaviour : MonoBehaviour
 {
     [SerializeField] AudioClip successSound;
+    [SerializeField] AudioClip failSound;
 
     public GameObject CrossHair;
     public float Speed = 1.2f;
     private AudioSource audioSource;
     private UIHud HUD;
+    private UIScoreboard scoreBoard;
+    private PackageBehaviour remainingPackage;
+    private bool isEnnemyHit = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         HUD = FindObjectOfType<UIHud>();
+        scoreBoard = FindObjectOfType<UIScoreboard>();
     }
 
     private void Update()
@@ -34,6 +38,10 @@ public class CarBehaviour : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
         transform.position = Vector3.MoveTowards(transform.position, trackingPosition, Speed * Time.deltaTime);
     }
+    private void removePackage () {
+        remainingPackage = FindObjectOfType<PackageBehaviour>();
+        Destroy(remainingPackage.gameObject);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -43,7 +51,7 @@ public class CarBehaviour : MonoBehaviour
         // we hit a Package
         if (Package != null)
         {
-            if (HUD.isTimerRunning) {
+            if (HUD.isTimerRunning && !isEnnemyHit) {
                 Destroy(other.gameObject);
                 audioSource.PlayOneShot(successSound);
                 HUD.IncreaseScore();
@@ -53,12 +61,11 @@ public class CarBehaviour : MonoBehaviour
         // we hit an Ennemy
         if (Ennemy != null)
         {
-            Debug.Log("We hit and Ennemy!");
             if (HUD.isTimerRunning) {
-                // Destroy(other.gameObject);
-                // audioSource.PlayOneShot(successSound);
-                // HUD.IncreaseScore();
-                Debug.Log("Play Game Over");
+                isEnnemyHit = true;
+                audioSource.PlayOneShot(failSound);
+                scoreBoard.showGameOver();
+                removePackage();
             }
         }
 

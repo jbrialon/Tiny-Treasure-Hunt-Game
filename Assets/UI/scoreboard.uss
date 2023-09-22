@@ -15,14 +15,21 @@
     transition: all 300ms ease-in-out-bounce;
 }
 
+.container--success .container-text {
+    background-image: url('project://database/Assets/UI/ressources/congratsBG.png?fileID=2800000&guid=730afcca389c14e4db59ccb438a4679d&type=3#congratsBG');
+}
+
+.container--fail .container-text {
+    background-image: url('project://database/Assets/UI/ressources/failBG.png?fileID=2800000&guid=95c7bb2db60e84b1e910b3192f12ca3e&type=3#failBG');
+}
+
 .container-text {
     position: relative;
     padding-top: 120%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    background-image: url('project://database/Assets/UI/ressources/congratsBG.png?fileID=2800000&guid=730afcca389c14e4db59ccb438a4679d&type=3#congratsBG');
+    width: 100%;   
 }
 
 .container-text-inner {

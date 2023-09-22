@@ -6,10 +6,13 @@ using UnityEngine.UIElements;
 public class UIHud : MonoBehaviour
 {
     [SerializeField] public float timer = 30f; // Start at 30 seconds
+
     public bool isTimerRunning = false;
     public int score;
-    private int scorePerHit = 1;
     public UIDocument uiDoc;
+
+    private int scorePerHit = 1;
+
     private VisualElement uiContainer;
     private Label uiTimerLabel;
     private Label uiScoreLabel;
@@ -31,6 +34,7 @@ public class UIHud : MonoBehaviour
         score += scorePerHit;
         uiScoreLabel.text = score.ToString();
     }
+
     public void startTimer () {
         Debug.Log("start timer");
         if (!isTimerRunning)

@@ -45,6 +45,7 @@ public class PackageSpawner : MonoBehaviour
         HUD = FindObjectOfType<UIHud>();
         randomSpawnTime = Random.Range(5.0f, 20.0f);
     }
+
     public void SpawnPackage(ARPlane plane)
     {
         var packageClone = GameObject.Instantiate(PackagePrefab);
@@ -65,6 +66,7 @@ public class PackageSpawner : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(euler: scaledEuler);
         Package.gameObject.transform.rotation = Package.gameObject.transform.rotation * targetRotation;
     }
+    
     private void SpawnEnemy(ARPlane plane)
     {
         isEnnemySpawned = true;

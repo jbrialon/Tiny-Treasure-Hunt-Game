@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   successSound: {fileID: 8300000, guid: f27b556db277144bd8a55d0f172ea610, type: 3}
+  failSound: {fileID: 8300000, guid: 3398087babbe3465a997db0641c0bf55, type: 3}
   CrossHair: {fileID: 0}
   Speed: 1.2
 --- !u!65 &9138514675943312725

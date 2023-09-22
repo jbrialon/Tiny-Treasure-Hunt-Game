@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3881535736571114655}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.017624438, y: 0.3304, z: 0.026854172}
+  m_LocalPosition: {x: 0.017624438, y: 0.111, z: 0.026854172}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,8 +44,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.3
-  m_Range: 2
+  m_Intensity: 2
+  m_Range: 0.3
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -103,7 +103,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6756252676746534587}
-  - component: {fileID: 5281623544274239091}
+  - component: {fileID: 9204580296592942287}
+  - component: {fileID: 251502810598291790}
   m_Layer: 0
   m_Name: Kraken Prefab
   m_TagString: Untagged
@@ -128,8 +129,8 @@ Transform:
   - {fileID: 1704118728889717282}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &5281623544274239091
-SphereCollider:
+--- !u!65 &9204580296592942287
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,8 +148,20 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.23
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.52922225, y: 0.26292348, z: 0.461997}
+  m_Center: {x: 0.021716103, y: 0.12708831, z: -0.0056856126}
+--- !u!114 &251502810598291790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8021706927373210621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969433df09b2149ee8263a1a529004d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1293020355050382234
 PrefabInstance:
   m_ObjectHideFlags: 0
