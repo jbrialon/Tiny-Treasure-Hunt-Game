@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 /**
@@ -15,6 +15,7 @@ public class CarBehaviour : MonoBehaviour
     private UIHud HUD;
     private UIScoreboard scoreBoard;
     private PackageBehaviour remainingPackage;
+    private EnnemyBehaviour remainingEnnemy;
     private bool isEnnemyHit = false;
 
     void Start()
@@ -38,10 +39,19 @@ public class CarBehaviour : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
         transform.position = Vector3.MoveTowards(transform.position, trackingPosition, Speed * Time.deltaTime);
     }
-    private void removePackage () {
+
+    private void RemovePackage () {
         remainingPackage = FindObjectOfType<PackageBehaviour>();
         Destroy(remainingPackage.gameObject);
     }
+
+    private void RemoveEnnemy () {
+        remainingEnnemy = FindObjectOfType<EnnemyBehaviour>();
+        if (remainingEnnemy != null) {
+            Destroy(remainingEnnemy.gameObject);
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -53,6 +63,7 @@ public class CarBehaviour : MonoBehaviour
         {
             if (HUD.isTimerRunning && !isEnnemyHit) {
                 Destroy(other.gameObject);
+                RemoveEnnemy();
                 audioSource.PlayOneShot(successSound);
                 HUD.IncreaseScore();
             }
@@ -65,7 +76,7 @@ public class CarBehaviour : MonoBehaviour
                 isEnnemyHit = true;
                 audioSource.PlayOneShot(failSound);
                 scoreBoard.showGameOver();
-                removePackage();
+                HUD.hideHUD();
             }
         }
 

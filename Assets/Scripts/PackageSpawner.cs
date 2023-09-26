@@ -6,15 +6,14 @@ using UnityEngine.XR.ARFoundation;
 public class PackageSpawner : MonoBehaviour
 {
     public DrivingSurfaceManager DrivingSurfaceManager;
-    private UIHud HUD;
     public GameObject PackagePrefab;
     public GameObject EnnemyPrefab;
 
     private PackageBehaviour Package;
-    private EnnemyBehaviour Ennemy;
 
     private bool isEnnemySpawned = false;
-    private float randomSpawnTime = 0;
+    private float enemySpawnChance = 0.1f;
+
     public static Vector3 RandomInTriangle(Vector3 v1, Vector3 v2)
     {
         float u = Random.Range(0.0f, 1.0f);
@@ -41,15 +40,15 @@ public class PackageSpawner : MonoBehaviour
         return randomPoint;
     }
 
-    private void Start () {
-        HUD = FindObjectOfType<UIHud>();
-        randomSpawnTime = Random.Range(5.0f, 20.0f);
-    }
-
     public void SpawnPackage(ARPlane plane)
     {
+        // find Random Location
+        var randomLocation = FindRandomLocation(plane);
+
+        // instantiate the Package, put it in random location and rotate it so it always face the camera
         var packageClone = GameObject.Instantiate(PackagePrefab);
-        packageClone.transform.position = FindRandomLocation(plane);
+
+        packageClone.transform.position = randomLocation;
 
         Package = packageClone.GetComponent<PackageBehaviour>();
 
@@ -65,15 +64,18 @@ public class PackageSpawner : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.Euler(euler: scaledEuler);
         Package.gameObject.transform.rotation = Package.gameObject.transform.rotation * targetRotation;
-    }
-    
-    private void SpawnEnemy(ARPlane plane)
-    {
-        isEnnemySpawned = true;
-        var enemyClone = GameObject.Instantiate(EnnemyPrefab);
-        enemyClone.transform.position = FindRandomLocation(plane);
 
-        Ennemy = enemyClone.GetComponent<EnnemyBehaviour>();
+        // Every package Spawn there is a 20% chance to spawn Kraken Tentacles around, 
+        // happen once per game Session put the Kraken Tentacles around the Package
+        if (Random.value <= 0.2f && isEnnemySpawned == false)
+        {   
+            Debug.Log("Release the Kraken!");
+            isEnnemySpawned = true;
+            var enemyClone = GameObject.Instantiate(EnnemyPrefab);
+            enemyClone.transform.position = randomLocation;
+        } else {
+            enemySpawnChance += 0.1f; // Increase the chance to spawn an enemy by 10%
+        }
     }
 
     private void Update()
@@ -85,17 +87,6 @@ public class PackageSpawner : MonoBehaviour
             {
                 SpawnPackage(lockedPlane);
             }
-
-            if (isEnnemySpawned == false)
-            {
-                // if the timer is under the random Spawn Time we spawn the Ennemy 
-                if (randomSpawnTime > HUD.timer) {
-                    SpawnEnemy(lockedPlane);
-                }
-            }
-
-            var packagePosition = Package.gameObject.transform.position;
-            packagePosition.Set(packagePosition.x, lockedPlane.center.y, packagePosition.z);
         }
     }
 }

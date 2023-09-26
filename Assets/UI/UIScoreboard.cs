@@ -9,6 +9,7 @@ public class UIScoreboard : MonoBehaviour
     private VisualElement uiContainer;
     private Label uiTitleLabel;
     private Label uiParagraphLabel;
+    private bool isScoreboardHidden = true;
     
     void Start()
     {
@@ -18,16 +19,22 @@ public class UIScoreboard : MonoBehaviour
     }
 
     public void showScoreboard (int score) {
-        uiTitleLabel.text = $"Congratulations !";
-        uiParagraphLabel.text = $"You found {score.ToString()} Treasure chests!";
-        uiContainer.AddToClassList("container--success");
-        uiContainer.AddToClassList("show-transition");
+        if (isScoreboardHidden) {
+            isScoreboardHidden = false;
+            uiTitleLabel.text = $"Congratulations !";
+            uiParagraphLabel.text = $"You found {score.ToString()} Treasure chests!";
+            uiContainer.AddToClassList("container--success");
+            uiContainer.AddToClassList("show-transition");
+        }
     }
 
     public void showGameOver () {
-        uiTitleLabel.text = $"Unfortunately,";
-        uiParagraphLabel.text = $"your pirate ship has fallen victim to the fearsome kraken!";
-        uiContainer.AddToClassList("container--fail");
-        uiContainer.AddToClassList("show-transition");
+        if (isScoreboardHidden) {
+            isScoreboardHidden = false;
+            uiTitleLabel.text = $"Unfortunately,";
+            uiParagraphLabel.text = $"your pirate ship has fallen victim to the fearsome kraken!";
+            uiContainer.AddToClassList("container--fail");
+            uiContainer.AddToClassList("show-transition");
+        }
     }
 }

@@ -30,6 +30,10 @@ public class UIHud : MonoBehaviour
         uiContainer.AddToClassList("show-transition");
     }
     
+    public void hideHUD () {
+        uiContainer.RemoveFromClassList("show-transition");
+    }
+
     public void IncreaseScore() {
         score += scorePerHit;
         uiScoreLabel.text = score.ToString();
