@@ -36,5 +36,6 @@ A Tiny AR Game made with Unity & AR Foundation to learn the process of making AR
     - [ ] That you could use in AR on your phone with a QRCode?
  - [ ] More Sounds! 
  - [ ] Add a Leaderboards
+ - [ ] Restart Button
 
   
