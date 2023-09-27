@@ -74,5 +74,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# Built files
-/Build_BurstDebugInformation_DoNotShip
+# Ignore directories starting with "Build" at the root level
+/Build*/
