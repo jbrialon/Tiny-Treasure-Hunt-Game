@@ -26,11 +26,13 @@ public class UIHud : MonoBehaviour
         Scoreboard = FindObjectOfType<UIScoreboard>();
     }
 
-    public void showHUD () {
+    public void ShowHUD () {
+        Debug.Log("Show HUD");
         uiContainer.AddToClassList("show-transition");
     }
     
-    public void hideHUD () {
+    public void HideHUD () {
+        Debug.Log("Hide HUD");
         uiContainer.RemoveFromClassList("show-transition");
     }
 
@@ -40,7 +42,7 @@ public class UIHud : MonoBehaviour
     }
 
     public void startTimer () {
-        Debug.Log("start timer");
+        Debug.Log("Start Timer");
         if (!isTimerRunning)
         {
             StartCoroutine(updateTimer());
@@ -88,6 +90,7 @@ public class UIHud : MonoBehaviour
 
     // When the timer reach 0 we show the score
     private void StopFunction() {
+        Debug.Log("Stop Timer");
         uiTimerLabel.text = "0:00s";
         Scoreboard.showScoreboard(score);
     }

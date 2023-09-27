@@ -58,7 +58,7 @@ public class CarBehaviour : MonoBehaviour
         var Package = other.GetComponent<PackageBehaviour>();
         var Ennemy = other.GetComponent<EnnemyBehaviour>();
 
-        // we hit a Package
+        // We hit a Package
         if (Package != null)
         {
             if (HUD.isTimerRunning && !isEnnemyHit) {
@@ -69,14 +69,14 @@ public class CarBehaviour : MonoBehaviour
             }
         }
 
-        // we hit an Ennemy
+        // We hit an Ennemy
         if (Ennemy != null)
         {
             if (HUD.isTimerRunning) {
                 isEnnemyHit = true;
                 audioSource.PlayOneShot(failSound);
                 scoreBoard.showGameOver();
-                HUD.hideHUD();
+                HUD.HideHUD();
             }
         }
 

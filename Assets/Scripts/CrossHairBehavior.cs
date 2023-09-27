@@ -90,7 +90,7 @@ public class CrossHairBehavior : MonoBehaviour
 
             // Hide instructions for Step One and Show Instructions for Step 2 + show HUD
             ui.updateTextToStepTwo();
-            HUD.showHUD();
+            HUD.ShowHUD();
             
         }
 
@@ -120,6 +120,8 @@ public class CrossHairBehavior : MonoBehaviour
 
     private bool WasTapped()
     {
+        var touch = Input.GetTouch(0);
+
         if (Input.GetMouseButtonDown(0))
         {
             return true;
@@ -130,7 +132,6 @@ public class CrossHairBehavior : MonoBehaviour
             return false;
         }
 
-        var touch = Input.GetTouch(0);
         if (touch.phase != TouchPhase.Began)
         {
             return false;
