@@ -32,7 +32,8 @@ A Tiny AR Game made with Unity & AR Foundation to learn the process of making AR
 
  - [ ] Add VFX when the elements are spawning and deasapearing
  - [ ] Add Different Type of Package
- - [ ] Create HTML viewer for the models like [this](https://release-the-kraken.netlify.app/)
+ - [ ] Create HTML viewer for the models like  [this](https://release-the-kraken.netlify.app/) 
+    - [ ] That you could use in AR on your phone with a QRCode?
  - [ ] More Sounds! 
  - [ ] Add a Leaderboards
 
