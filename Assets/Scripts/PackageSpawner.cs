@@ -32,9 +32,25 @@ public class PackageSpawner : MonoBehaviour
         // Select random triangle in Mesh
         var mesh = plane.GetComponent<ARPlaneMeshVisualizer>().mesh;
         var triangles = mesh.triangles;
-        var triangle = triangles[(int)Random.Range(0, triangles.Length - 1)] / 3 * 3;
         var vertices = mesh.vertices;
-        var randomInTriangle = RandomInTriangle(vertices[triangle], vertices[triangle + 1]);
+
+        if (triangles.Length < 3 || vertices.Length < 3)
+        {
+            // Handle the case where there are not enough triangles or vertices
+            // to avoid the IndexOutOfRangeException.
+            return Vector3.zero;
+        }
+
+        // Generate a random triangle index within the valid range.
+        int triangleIndex = (int)Random.Range(0, (triangles.Length / 3)) * 3;
+
+        // Ensure the triangle index is within bounds.
+        if (triangleIndex >= triangles.Length)
+        {
+            triangleIndex = triangles.Length - 3; // Adjust to the last valid triangle.
+        }
+
+        var randomInTriangle = RandomInTriangle(vertices[triangles[triangleIndex]], vertices[triangles[triangleIndex + 1]]);
         var randomPoint = plane.transform.TransformPoint(randomInTriangle);
 
         return randomPoint;
@@ -67,7 +83,7 @@ public class PackageSpawner : MonoBehaviour
 
         // Every package Spawn there is a 20% chance to spawn Kraken Tentacles around, 
         // happen once per game Session put the Kraken Tentacles around the Package
-        if (Random.value <= 0.2f && isEnnemySpawned == false)
+        if (Random.value <= enemySpawnChance && isEnnemySpawned == false)
         {   
             Debug.Log("Release the Kraken!");
             isEnnemySpawned = true;

@@ -120,8 +120,6 @@ public class CrossHairBehavior : MonoBehaviour
 
     private bool WasTapped()
     {
-        var touch = Input.GetTouch(0);
-
         if (Input.GetMouseButtonDown(0))
         {
             return true;
@@ -131,7 +129,7 @@ public class CrossHairBehavior : MonoBehaviour
         {
             return false;
         }
-
+        var touch = Input.GetTouch(0);
         if (touch.phase != TouchPhase.Began)
         {
             return false;

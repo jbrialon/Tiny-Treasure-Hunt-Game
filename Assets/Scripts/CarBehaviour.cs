@@ -72,7 +72,7 @@ public class CarBehaviour : MonoBehaviour
         // We hit an Ennemy
         if (Ennemy != null)
         {
-            if (HUD.isTimerRunning) {
+            if (HUD.isTimerRunning && !isEnnemyHit) {
                 isEnnemyHit = true;
                 audioSource.PlayOneShot(failSound);
                 scoreBoard.showGameOver();

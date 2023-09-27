@@ -12,6 +12,7 @@ public class UIHud : MonoBehaviour
     public UIDocument uiDoc;
 
     private int scorePerHit = 1;
+    private int internalStep = 1;
 
     private VisualElement uiContainer;
     private Label uiTimerLabel;
@@ -27,13 +28,18 @@ public class UIHud : MonoBehaviour
     }
 
     public void ShowHUD () {
-        Debug.Log("Show HUD");
-        uiContainer.AddToClassList("show-transition");
+        if (internalStep == 1) {
+            Debug.Log("Show HUD");
+            internalStep = 2;
+            uiContainer.AddToClassList("show-transition");
+        }
     }
     
     public void HideHUD () {
-        Debug.Log("Hide HUD");
-        uiContainer.RemoveFromClassList("show-transition");
+        if (internalStep == 2) {
+            Debug.Log("Hide HUD");
+            uiContainer.RemoveFromClassList("show-transition");
+        }
     }
 
     public void IncreaseScore() {
