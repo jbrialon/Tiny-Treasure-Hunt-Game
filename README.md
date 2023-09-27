@@ -26,13 +26,13 @@ A Tiny AR Game made with Unity & AR Foundation to learn the process of making AR
 
 ## Screenshots
 
-TODO  
+<img src="https://github.com/jbrialon/ar-unity-project/blob/main/Assets/UI/ressources/splash_bg.png?raw=true" width="300"/>  
 
 ## Contributing & TODO List
 
  - [ ] Add VFX when the elements are spawning and deasapearing
  - [ ] Add Different Type of Package
- - [ ] Create HTML viewer for the models like [this](release-the-kraken.netlify.app/)
+ - [ ] Create HTML viewer for the models like [this](https://release-the-kraken.netlify.app/)
  - [ ] More Sounds! 
  - [ ] Add a Leaderboards
 
